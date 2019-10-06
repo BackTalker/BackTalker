@@ -32,7 +32,7 @@ region = j['region_code']
 print(city)
 print(region)
 
-
+# https://pyowm.readthedocs.io/en/latest/usage-examples-v2/weather-api-usage-examples.html#owm-weather-api-version-2-5-usage-examples
 from pyowm import OWM
 API_keys = '23ae1c41e14442adefb138bcf1efe3c6'
 owm = OWM(API_keys)
