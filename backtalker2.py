@@ -4,7 +4,7 @@ import re
 import datetime as dt
 from slackclient import SlackClient
 
-from DateTime import *
+from modules.all import *
 
 # instantiate Slack client
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
@@ -52,6 +52,8 @@ def handle_command(command, channel):
         response = "Sure...write some code then I can do that!"
     elif command.startswith("date"):
         response = currentDate()
+    elif command.startswith("time"):
+        response = currentTime()
     elif command.startswith("your my best friend"):
         response = "Thanks so much, buddy!!! \n Your the best!!"
     elif command.startswith("hello") or command.startswith("hi") or command.startswith("hey"):
