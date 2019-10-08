@@ -63,6 +63,8 @@ def handle_command(command, channel):
     elif command.startswith("math"):
         chopCommand = command.split(" ")
         response = "The answer for {} is {}".format(chopCommand[1], str(eval(chopCommand[1])))
+    elif command.startswith("weather"):
+        response = currentWeather()
 
 
     slack_client.api_call(
