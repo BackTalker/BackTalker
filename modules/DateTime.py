@@ -1,5 +1,15 @@
-import datetime as dt
+'''
+DateTime.py
+Author: Michael Chang
+Desc: Output current time and date of today
+
+Future implementations: 
+    * adding feature of holidays
+    * Birthday
+'''
+
 import time as t
+import datetime as dt
 
 monthName = {
     1:"January",
@@ -16,36 +26,22 @@ monthName = {
     12:"December"
 }
 
+# Desc: Output current date (Day, Month, Date, Year)
 def currentDate():
     dateNow = dt.datetime.now()
-    dateNow.month
 
     response = "Today is {} {} {}, {}".format(dateNow.strftime("%A"), monthName[dateNow.month], int(dateNow.strftime("%d")), dateNow.year)
 
     return response
 
+# Desc: Output current time
 def currentTime():
-    # datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    # currHour = dt.datetime.now().hour
-    # currMin = dt.datetime.now().minute
-    currTime = dt.datetime.now().strftime('%H:%M')
-    convTime = dt.datetime.strptime(currTime, '%H:%M')
-    resTime = convTime.strftime("%I:%M %p")
-    response = "The time is now {}".format(resTime)
+    currTime = dt.datetime.now().strftime('%H:%M')          # Get the current time
+    convTime = dt.datetime.strptime(currTime, '%H:%M')      # Convert to str type
+    resTime = convTime.strftime("%I:%M %p")                 # Convert time from 24 hr to 12 hr
+    response = "The time is now {}".format(resTime)         # Output the response
 
     return response
 
-    # currTime.strftime("%I:%M %p")
-    # if currHour > 11:
-    #     response = "The time now is {}:{}pm"
 
-'''
-d = dt.datetime.strptime("10:30", "%H:%M")
->>> d.strftime("%I:%M %p")
-'10:30 AM'
->>> d = datetime.strptime("22:30", "%H:%M")
->>> d.strftime("%I:%M %p")
-'10:30 PM'
-
-'''
 
