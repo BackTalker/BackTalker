@@ -1,4 +1,7 @@
-# BackTalker
+
+# BackTalker (Slackbot)
+
+![Logo](images/owlLogoMini2.jpg)
 
 A virtual assistant that is developed in Python and Slack API
 
