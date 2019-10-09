@@ -54,7 +54,7 @@ def handle_command(command, channel):
         response = currentDate()
     elif command.startswith("time"):
         response = currentTime()
-    elif command.startswith("your my best friend"):
+    elif command.startswith("your my best friend") or command.startswith("you are my best friend"):
         response = "Thanks so much, buddy!!! \n Your the best!!"
     elif command.startswith("hello") or command.startswith("hi") or command.startswith("hey"):
         response = "Hello, My name is BackTalker"
