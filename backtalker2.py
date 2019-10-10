@@ -61,8 +61,9 @@ def handle_command(command, channel):
     elif command.startswith("thanks") or command.startswith("thank you"):
         response = "Your Welcome"
     elif command.startswith("math"):
-        chopCommand = command.split(" ")
-        response = "The answer for {} is {}".format(chopCommand[1], str(eval(chopCommand[1])))
+        problem = command[4:]
+        response = "The answer for {} is {}".format(problem, str(eval(problem)))
+        
     elif command.startswith("weather"):
         response = currentWeather()
 
