@@ -63,7 +63,8 @@ def handle_command(command, channel):
     elif command.startswith("math"):
         problem = command[4:]
         response = "The answer for {} is {}".format(problem, str(eval(problem)))
-        
+    elif command.startswith("say something"):
+        response = compliments()    
     elif command.startswith("weather"):
         response = currentWeather()
 
