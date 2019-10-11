@@ -67,6 +67,9 @@ def handle_command(command, channel):
         response = compliments()    
     elif command.startswith("weather"):
         response = currentWeather()
+    elif command.startswith("cmpt371"):
+        word = command[8:]
+        response = cmpt371(word)
 
 
     slack_client.api_call(
