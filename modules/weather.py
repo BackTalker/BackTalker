@@ -14,15 +14,18 @@ Desc: Check weather at your current location
 import json
 import requests
 from pyowm import OWM
-from socket import gethostbyname, gethostname
+from socket import gethostbyname, gethostname, getfqdn
 
 # Desc: Get current weather
 def currentWeather():
     # Get access to the current IP address
     IPAddr = gethostbyname(gethostname())
+    # IPAddr = gethostbyname(getfqdn())
     send_url = 'http://api.ipstack.com/{}?access_key=4e9f9a4d9d5411bd4c9a9f171d6a42ea'.format(IPAddr)
     r = requests.get(send_url)  # get ipstack request
     j = json.loads(r.text)      # Load to json form
+
+    print(IPAddr)
 
     # Create location variable
     city = j['city']                            # City's name  
@@ -30,8 +33,9 @@ def currentWeather():
     country = j['country_code']                 # name of Country's name
     locateMe = '{},{}'.format(city,country)     # location: city name,Country name
 
-    # print(city)
-    # print(region)
+    print(country)
+    print(city)
+    print(region)
 
     # Getting the weather report
     API_keys = '23ae1c41e14442adefb138bcf1efe3c6'       # get API keys

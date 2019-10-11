@@ -2,10 +2,20 @@
 import requests
 import json
 from socket import *
+import os
+
+
+# gw = os.popen("ip -4 route show default").read().split()
+# s = socket(AF_INET, SOCK_DGRAM)
+# s.connect((gw[2], 0))
 
 IPAddr = gethostbyname(gethostname())
+# IPAddr = s.getsockname()[0]
+# gateway = gw[2]
+# host = gethostname()
 
-# print(IPAddr)
+print(IPAddr)
+# print("IP: {}, GW: {}, Host: {}".format(IPAddr, gateway, host))
 
 send_url = 'http://api.ipstack.com/{}?access_key=4e9f9a4d9d5411bd4c9a9f171d6a42ea'.format(IPAddr)
 r = requests.get(send_url)
