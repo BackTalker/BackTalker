@@ -7,10 +7,8 @@ from slackclient import SlackClient
 from modules.all import *
 
 # instantiate Slack client
-SLACK_BOT_TOKEN = 'xoxb-782056409184-787065217654-pSbkpFs7UmUmz3wjfXXdie3S'
+slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
-# slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
-slack_client = SlackClient(SLACK_BOT_TOKEN)
 # backtalker's user ID in Slack: value is assignn
 backtalker_id = None
 
