@@ -3,27 +3,33 @@ import requests
 import json
 from socket import *
 import os
-
+from urllib.request import urlopen
 
 # gw = os.popen("ip -4 route show default").read().split()
 # s = socket(AF_INET, SOCK_DGRAM)
 # s.connect((gw[2], 0))
 
-IPAddr = gethostbyname(gethostname())
+# IPAddr = gethostbyname(gethostname())
+# IPAddr = gethostbyname("")
 # IPAddr = s.getsockname()[0]
 # gateway = gw[2]
 # host = gethostname()
 
-print(IPAddr)
+url = 'http://ipinfo.io/json'
+response = urlopen(url)
+data = json.load(response)
+# IPAddr = data['ip']
+
+# print(IPAddr)
 # print("IP: {}, GW: {}, Host: {}".format(IPAddr, gateway, host))
 
-send_url = 'http://api.ipstack.com/{}?access_key=4e9f9a4d9d5411bd4c9a9f171d6a42ea'.format(IPAddr)
-r = requests.get(send_url)
-j = json.loads(r.text)
+# send_url = 'http://api.ipstack.com/{}?access_key=4e9f9a4d9d5411bd4c9a9f171d6a42ea'.format(IPAddr)
+# r = requests.get(send_url)
+# j = json.loads(r.text)
 
-city = j['city']
-region = j['region_code']
-country = j['country_code']
+city = data['city']
+region = data['region']
+country = data['country']
 
 print(city)
 print(region)

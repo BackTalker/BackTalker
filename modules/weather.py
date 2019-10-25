@@ -6,32 +6,31 @@ Desc: Check weather at your current location
       Weather output through pyOWN API (Online Weather Network)
       More info: https://pyowm.readthedocs.io/en/latest/usage-examples-v2/weather-api-usage-examples.html#owm-weather-api-version-2-5-usage-examples
 
-      Tracking your location is used through IPStack
+      Tracking your location is used through ipinfo.io
+      More info: https://ipinfo.io
 
       Might be useful for location in the future: https://geocoder.readthedocs.io
 '''
 
 import json
 import requests
+from socket import *
 from pyowm import OWM
-from socket import gethostbyname, gethostname, getfqdn
+from urllib.request import urlopen
 
 # Desc: Get current weather
 def currentWeather():
-    # Get access to the current IP address
-    IPAddr = gethostbyname(gethostname())
-    # IPAddr = gethostbyname(getfqdn())
-    send_url = 'http://api.ipstack.com/{}?access_key=4e9f9a4d9d5411bd4c9a9f171d6a42ea'.format(IPAddr)
-    r = requests.get(send_url)  # get ipstack request
-    j = json.loads(r.text)      # Load to json form
 
-    print(IPAddr)
+    # Use this link to get access to my current location
+    url = 'http://ipinfo.io/json'
+    response = urlopen(url)
+    data = json.load(response)
 
     # Create location variable
-    city = j['city']                            # City's name  
-    region = j['region_code']                   # name of region (Province, State)
-    country = j['country_code']                 # name of Country's name
-    locateMe = '{},{}'.format(city,country)     # location: city name,Country name
+    city = data['city']                            # City's name  
+    region = data['region']                        # name of region (Province, State)
+    country = data['country']                      # name of Country's name
+    locateMe = '{},{}'.format(city,country)        # location: city name,Country name
 
     print(country)
     print(city)
